@@ -1,26 +1,297 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "PowerGrotesk";
+  src: url("/static/media/PowerGrotesk-Regular.b052d3329dc6f87ae610.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/static/media/Montserrat-Medium.b8c6753baa964ccac1ba.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/static/media/Montserrat-Bold.50f0257aa1e905f4bfaf.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GothamBold";
+  src: url("/static/media/GothamBold.108854bb27dee2dce854.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Anybody";
+  src: url("/static/media/Anybody_Expanded-ExtraLightItalic.ac608df8841e4e79726d.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Anybody";
+  src: url("/static/media/Anybody_Expanded-SemiBoldItalic.34840d5d607e6ffc789f.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --red-bright: #fa0000;
+  --red-mid: #ce0d0d;
+  --red-deep: #9c0c02;
+  --red-dark: #510202;
+  --red-darker: #4b0101;
+  --maroon: #3f2e2e;
+  --warm-gray: #7e6666;
+  --ink: #161616;
+  --char: #222222;
+  --soft-gray: #353434;
+  --light-gray: #ddd;
+  --off-white: #fefefe;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-red-bright: var(--red-bright);
+  --color-red-mid: var(--red-mid);
+  --color-red-deep: var(--red-deep);
+  --color-red-dark: var(--red-dark);
+  --color-red-darker: var(--red-darker);
+  --color-maroon: var(--maroon);
+  --color-ink: var(--ink);
+  --color-char: var(--char);
+  --color-soft-gray: var(--soft-gray);
+  --color-warm-gray: var(--warm-gray);
+
+  --font-sans: "Montserrat", system-ui, sans-serif;
+  --font-display: "PowerGrotesk", "GothamBold", sans-serif;
+  --font-heading: "GothamBold", "Montserrat", sans-serif;
+  --font-italic: "Anybody", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Gotham", "Montserrat", Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "GothamBold", "Montserrat", sans-serif;
+  letter-spacing: -0.005em;
+}
+
+.font-display { font-family: "PowerGrotesk", "GothamBold", sans-serif; }
+.font-italic-stylish { font-family: "Anybody", serif; font-style: italic; }
+.font-anybody { font-family: "Anybody", serif; font-style: italic; font-weight: 200; }
+.font-anybody-bold { font-family: "Anybody", serif; font-style: italic; font-weight: 600; }
+
+html { scroll-behavior: smooth; }
+
+.container-x {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-x { padding-left: 2.5rem; padding-right: 2.5rem; }
+}
+
+.text-balance { text-wrap: balance; }
+
+/* ===== Mabsan original-style elements ===== */
+
+/* CTA button — kırmızı gradient + glow (orijinal .cv_work_button / .iletisim_work_button) */
+.btn-mabsan {
+  background: linear-gradient(317.85deg, #fa0000 -41.59%, rgba(250,0,0,0) 143.46%);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+  color: #fff;
+  font-family: "Anybody", serif;
+  font-style: italic;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 0, 0, 0.4);
+}
+.btn-mabsan:hover {
+  box-shadow: 0 0 35px rgba(255, 0, 0, 1);
+  transform: translateY(-2px);
+}
+
+/* Outline kırmızı buton (orijinal .work_button) */
+.btn-mabsan-outline {
+  background: transparent;
+  border: 2px solid #ffb0b0;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+.btn-mabsan-outline:hover {
+  border-color: #fa0000;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+/* Kapasite band — koyu kırmızı şerit (orijinal .kapasite_band) */
+.kapasite-band {
+  background: var(--red-dark);
+  border: 2px solid #000;
+  border-radius: 40px 0 40px 0;
+}
+
+/* Black band — siyah şerit */
+.black-band {
+  background: #000;
+  height: 50px;
+}
+
+/* Red glow rounded box (orijinal .redline) */
+.redline {
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(255, 0, 0, 0.486);
+  border: 2px solid transparent;
+  outline: 2px solid rgba(255, 0, 0, 0.42);
+  padding: 10px;
+}
+
+/* Devasa kırmızı yıl rakamı (orijinal .timeline_year — kırmızı gradient text) */
+.timeline-year-display {
+  font-family: "Anybody", serif;
+  font-style: italic;
+  font-weight: 600;
+  background: linear-gradient(317.85deg, #fa0000 -41.59%, rgba(250,0,0,0) 143.46%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 0.85;
+}
+
+/* Hero başlık - "Bu Kutunun İçinde" tarzı */
+.bukutu-line {
+  font-family: "Anybody", serif;
+  font-style: italic;
+  font-weight: 200;
+  letter-spacing: 0.02em;
+}
+
+/* Fade in/out animasyonu — orijinal hero rotating word */
+@keyframes mabsan-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes mabsan-fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-8px); }
+}
+.fade-in  { animation: mabsan-fade-in 0.6s ease forwards; }
+.fade-out { animation: mabsan-fade-out 0.6s ease forwards; }
+
+/* Section "baslik" - siyah header bar (orijinal .baslik) */
+.section-baslik {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  font-family: "GothamBold", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Glow ring around card */
+.red-ring {
+  border: 1px solid rgba(255, 0, 0, 0.25);
+  box-shadow: 0 0 30px rgba(250, 0, 0, 0.15);
+  border-radius: 20px;
+}
+
+/* Vertical text */
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Loading bar gradient bg */
+.red-gradient-bg {
+  background: linear-gradient(135deg, var(--red-bright) 0%, var(--red-dark) 100%);
+}
+
+/* "Diger Sektor" card hover overlay style */
+.sector-card {
+  transition: all 0.4s ease;
+  overflow: hidden;
+  border-radius: 20px 0 20px 0;
+}
+.sector-card:hover { transform: scale(1.02); }
+
+/* 3D Rotating Product Gallery (orijinal Zu/Ju spanSlider pattern'i) */
+.product-3d-stage {
+  position: relative;
+  height: 320px;
+  width: 100%;
+  overflow: hidden;
+  perspective: 1100px;
+  perspective-origin: 50% 50%;
+}
+.product-3d-wheel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  animation: product-3d-spin 40s linear infinite;
+}
+.product-3d-wheel.reverse {
+  animation-direction: reverse;
+}
+.product-3d-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  margin-left: -70px;
+  margin-top: -70px;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  transform: rotateY(calc(var(--i) * 17.142857deg)) translateZ(560px);
+}
+.product-3d-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+@keyframes product-3d-spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+@media (max-width: 1024px) {
+  .product-3d-stage { height: 260px; }
+  .product-3d-item {
+    width: 110px; height: 110px;
+    margin-left: -55px; margin-top: -55px;
+    transform: rotateY(calc(var(--i) * 17.142857deg)) translateZ(420px);
+  }
+}
+@media (max-width: 640px) {
+  .product-3d-stage { height: 220px; }
+  .product-3d-item {
+    width: 90px; height: 90px;
+    margin-left: -45px; margin-top: -45px;
+    transform: rotateY(calc(var(--i) * 17.142857deg)) translateZ(320px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
