@@ -91,7 +91,7 @@ export default function Navbar() {
         scrolled ? "bg-black/85 backdrop-blur-md border-b border-red-deep/30" : "bg-transparent"
       }`}
     >
-      <div className="container-x flex items-center justify-between h-24 md:h-28">
+      <div className="container-x flex items-center justify-between h-20 md:h-28">
         <Link href={homeHref} className="flex items-center gap-2 shrink-0">
           <Image
             src={(media as Record<string, string>)["mabsan.svg"] || "/media/mabsan.e2e0e3493e750a77d740fd309d82850b.svg"}
@@ -99,7 +99,7 @@ export default function Navbar() {
             width={240}
             height={44}
             priority
-            className="h-12 md:h-14 w-auto"
+            className="h-10 md:h-14 w-auto"
           />
         </Link>
 

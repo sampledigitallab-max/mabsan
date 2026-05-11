@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO — beyaz kutu (mabsan1080low) + "Bu Kutunun İçinde [dönen] var" + 36 YILLIK TECRÜBE */}
-      <section className="relative h-screen min-h-[680px] w-full overflow-hidden bg-black">
+      <section className="relative h-[100dvh] min-h-[560px] md:min-h-[680px] w-full overflow-hidden bg-black">
         {/* Center rotating box video */}
         <video
           autoPlay
@@ -33,10 +33,10 @@ export default function HomePage() {
             {/* Sol-alt: Bu Kutunun İçinde + dönen kelime + var */}
             <Reveal>
               <div>
-                <p className="bukutu-line text-white text-2xl md:text-4xl mb-1">
+                <p className="bukutu-line text-white text-xl md:text-3xl mb-1">
                   Bu Kutunun İçinde
                 </p>
-                <h1 className="text-white text-4xl md:text-6xl lg:text-7xl leading-[1.0] font-anybody-bold italic flex items-center gap-3 flex-wrap">
+                <h1 className="text-white text-3xl md:text-5xl lg:text-6xl leading-[1.0] font-anybody-bold italic flex items-center gap-3 flex-wrap">
                   <RotatingHero /> <span className="text-white">var</span>
                 </h1>
               </div>
@@ -45,10 +45,10 @@ export default function HomePage() {
             {/* Sağ-alt: 36 YILLIK / TECRÜBE */}
             <Reveal delay={0.3}>
               <div className="flex items-end gap-3 self-start md:self-end">
-                <span className="font-anybody-bold italic text-white text-6xl md:text-[6rem] leading-[0.85]">
+                <span className="font-anybody-bold italic text-white text-5xl md:text-[6rem] leading-[0.85]">
                   36
                 </span>
-                <div className="flex flex-col text-white text-xs md:text-base uppercase tracking-[0.18em] pb-1.5 leading-snug font-display">
+                <div className="flex flex-col text-white text-[10px] md:text-base uppercase tracking-[0.18em] pb-1 md:pb-1.5 leading-snug font-display">
                   <span>YILLIK</span>
                   <span className="font-anybody-bold italic">TECRÜBE</span>
                 </div>
@@ -115,21 +115,13 @@ export default function HomePage() {
             <p className="text-red-bright text-sm font-display tracking-[0.3em] uppercase mb-3">
               Değerli Üretim
             </p>
-            <h2 className="font-anybody-bold italic text-3xl md:text-5xl text-white max-w-3xl text-balance leading-[1.05] mb-10">
+            <h2 className="font-anybody-bold italic text-2xl md:text-4xl text-white max-w-3xl text-balance leading-[1.05] mb-8">
               Döngüsel üretim sürecimiz.
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <ProductionSlider />
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <div className="mt-10">
-              <Link href="/uretim" className="btn-mabsan inline-flex items-center gap-2 px-8 py-4">
-                Üretim Sürecinin Tamamı <ChevronRight size={18} />
-              </Link>
-            </div>
           </Reveal>
         </div>
       </section>

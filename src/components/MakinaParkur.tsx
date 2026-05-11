@@ -60,7 +60,7 @@ export default function MakinaParkur() {
     <div className="grid md:grid-cols-12 gap-8 items-center">
       {/* Sol: başlık + metin + ←→ */}
       <div className="md:col-span-4">
-        <h2 className="font-anybody-bold italic text-white text-4xl md:text-5xl leading-[1.05] mb-6 text-balance">
+        <h2 className="font-anybody-bold italic text-white text-3xl md:text-4xl leading-[1.05] mb-6 text-balance">
           {t.title1}
           <br />
           {t.title2}

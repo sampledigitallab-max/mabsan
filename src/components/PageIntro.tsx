@@ -16,7 +16,7 @@ export default function PageIntro({
     <section className="py-14 md:py-20 bg-black">
       <div className="container-x">
         <Reveal>
-          <h2 className="font-anybody-bold italic text-white text-3xl md:text-5xl lg:text-6xl leading-[1.05] text-balance mb-6 max-w-4xl">
+          <h2 className="font-anybody-bold italic text-white text-2xl md:text-4xl lg:text-5xl leading-[1.05] text-balance mb-5 max-w-4xl">
             {title}
           </h2>
           {description && (

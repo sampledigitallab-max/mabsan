@@ -69,7 +69,7 @@ export default function StackedYearTimeline() {
         <p className="text-red-bright font-display text-xs tracking-[0.3em] uppercase mb-3">
           {t.eyebrow}
         </p>
-        <h2 className="font-anybody-bold italic text-white text-4xl md:text-6xl text-balance leading-[0.95]">
+        <h2 className="font-anybody-bold italic text-white text-3xl md:text-5xl text-balance leading-[0.95]">
           {t.title}
         </h2>
       </div>

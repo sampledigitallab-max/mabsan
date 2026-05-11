@@ -192,16 +192,9 @@ export default function Footer() {
 
       {/* Alt 4 sütun: Sosyal + 3 link sütunu */}
       <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 pb-8">
-        {/* Sosyal + Logo */}
+        {/* Sosyal */}
         <div className="col-span-2 md:col-span-1 space-y-5">
           <h4 className="font-anybody-bold italic text-white text-2xl">{t.social}</h4>
-          <Image
-            src={m["mabsan_logo_wr.png"] || "/media/mabsan_logo_wr.11f0158feac787aa6c72.png"}
-            alt="Mabsan"
-            width={140}
-            height={40}
-            className="h-9 w-auto brightness-0 invert"
-          />
           <div className="flex items-center gap-2.5">
             {socials.map(
               (s) =>

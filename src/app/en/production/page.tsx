@@ -94,7 +94,7 @@ export default function ProductionPageEN() {
       <section className="py-16 md:py-24 bg-black">
         <div className="container-x grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <Reveal>
-            <h2 className="font-anybody-bold italic text-white text-5xl md:text-7xl leading-[0.95] mb-8 text-balance">
+            <h2 className="font-anybody-bold italic text-white text-3xl md:text-5xl leading-[0.95] mb-8 text-balance">
               Valuable
               <br />
               Production
@@ -153,7 +153,7 @@ export default function ProductionPageEN() {
             <p className="text-red-bright text-sm font-display tracking-[0.3em] uppercase mb-5">
               4-Stage Production
             </p>
-            <h2 className="font-anybody-bold italic text-4xl md:text-6xl text-white max-w-4xl mb-20 text-balance leading-[1.05]">
+            <h2 className="font-anybody-bold italic text-3xl md:text-5xl text-white max-w-4xl mb-20 text-balance leading-[1.05]">
               Our circular production process.
             </h2>
           </Reveal>
@@ -171,7 +171,7 @@ export default function ProductionPageEN() {
                       </div>
                     </div>
                     <div className={`md:col-span-5 ${reverse ? "md:[direction:ltr]" : ""}`}>
-                      <div className="timeline-year-display text-[120px] md:text-[180px] mb-2 leading-none">
+                      <div className="timeline-year-display text-[80px] md:text-[180px] mb-2 leading-none">
                         {step.n}
                       </div>
                       <h3 className="font-display text-2xl md:text-3xl text-white mb-4">
@@ -198,7 +198,7 @@ export default function ProductionPageEN() {
         <div className="container-x relative z-10">
           <Reveal>
             <p className="text-red-bright text-sm font-display tracking-[0.3em] uppercase mb-5">Corrugated Flute Types</p>
-            <h2 className="font-anybody-bold italic text-4xl md:text-5xl text-white max-w-3xl mb-16 text-balance leading-[1.05]">
+            <h2 className="font-anybody-bold italic text-3xl md:text-4xl text-white max-w-3xl mb-16 text-balance leading-[1.05]">
               The right flute profile for your product.
             </h2>
           </Reveal>
@@ -222,7 +222,7 @@ export default function ProductionPageEN() {
         <div className="container-x">
           <Reveal>
             <p className="text-red-bright text-sm font-display tracking-[0.3em] uppercase mb-5">Paper Types</p>
-            <h2 className="font-anybody-bold italic text-4xl md:text-5xl text-white max-w-3xl mb-16 text-balance leading-[1.05]">
+            <h2 className="font-anybody-bold italic text-3xl md:text-4xl text-white max-w-3xl mb-16 text-balance leading-[1.05]">
               The raw materials we use.
             </h2>
           </Reveal>

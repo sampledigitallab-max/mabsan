@@ -111,14 +111,14 @@ export default function ExpandingSectorCards() {
 
                   {/* Bottom: dikey isim + ikon */}
                   <div className="absolute bottom-4 left-0 right-0 flex flex-col items-center gap-3">
-                    <div className="w-7 h-7 opacity-70">
+                    <div className="w-7 h-7 opacity-80">
                       {m[s.iconLight] && (
                         <Image
                           src={m[s.iconLight]}
                           alt=""
                           width={28}
                           height={28}
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-contain brightness-0"
                         />
                       )}
                     </div>

@@ -52,7 +52,7 @@ export default function ProductsPageEN() {
                       </Link>
                     </div>
                     <div className={`md:col-span-5 ${reverse ? "md:[direction:ltr]" : ""}`}>
-                      <div className="timeline-year-display text-[100px] md:text-[140px] leading-none mb-2">
+                      <div className="timeline-year-display text-[64px] md:text-[140px] leading-none mb-2">
                         0{i + 1}
                       </div>
                       <h3 className="font-anybody-bold italic text-3xl md:text-4xl text-white mb-5 text-balance">
@@ -80,7 +80,7 @@ export default function ProductsPageEN() {
         <div className="container-x">
           <Reveal>
             <p className="text-red-bright text-sm font-display tracking-[0.3em] uppercase mb-5">Industries</p>
-            <h2 className="font-anybody-bold italic text-4xl md:text-5xl text-white max-w-3xl mb-16 text-balance leading-[1.05]">
+            <h2 className="font-anybody-bold italic text-3xl md:text-4xl text-white max-w-3xl mb-16 text-balance leading-[1.05]">
               Solutions we craft for your industry.
             </h2>
           </Reveal>

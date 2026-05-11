@@ -30,7 +30,7 @@ export default function PageHero({
       <div className="container-x">
         <Reveal>
           <div className="flex items-center gap-5 md:gap-7 py-3">
-            <h1 className="font-anybody-bold italic text-white text-4xl md:text-6xl lg:text-7xl leading-none whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+            <h1 className="font-anybody-bold italic text-white text-3xl md:text-5xl lg:text-6xl leading-none whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
               {title}
             </h1>
             <span className="flex-1 h-px bg-white/30" />

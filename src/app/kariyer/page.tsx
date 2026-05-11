@@ -39,7 +39,7 @@ export default function KariyerPage() {
         <div className="container-x">
           <Reveal>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6 md:mb-8">
-              <h1 className="font-anybody-bold italic text-white text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance">
+              <h1 className="font-anybody-bold italic text-white text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-balance">
                 Mabsanlı Kimdir?
               </h1>
               <p className="font-anybody italic text-white/55 text-sm md:text-base leading-relaxed max-w-xs md:text-right">
@@ -70,7 +70,7 @@ export default function KariyerPage() {
               >
                 {/* Metin */}
                 <div className={p.reverse ? "md:[direction:ltr]" : ""}>
-                  <h2 className="font-anybody-bold italic text-white text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance mb-6">
+                  <h2 className="font-anybody-bold italic text-white text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-balance mb-6">
                     {p.title}
                   </h2>
                   <p className="font-anybody italic text-white/55 text-base md:text-lg leading-relaxed max-w-lg">

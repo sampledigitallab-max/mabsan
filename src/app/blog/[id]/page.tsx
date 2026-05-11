@@ -89,7 +89,7 @@ export default async function BlogDetailPage({
             </Link>
 
             <div className="flex items-baseline gap-3 mb-5">
-              <span className="timeline-year-display text-5xl md:text-6xl text-white leading-none">
+              <span className="timeline-year-display text-4xl md:text-5xl text-white leading-none">
                 {post.day}
               </span>
               <span className="font-display text-sm tracking-[0.3em] uppercase text-red-bright">
@@ -97,7 +97,7 @@ export default async function BlogDetailPage({
               </span>
             </div>
 
-            <h1 className="font-anybody-bold italic text-white text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance mb-10">
+            <h1 className="font-anybody-bold italic text-white text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-balance mb-10">
               {post.header}
             </h1>
           </Reveal>
