@@ -13,14 +13,14 @@ const teamByLang: Record<"tr" | "en", Person[]> = {
     { id: "1", name: "Mehmet Mersin", position: "Genel Müdür", photo: "/media/team/mehmet-mersin.jpg" },
     { id: "2", name: "İsmet Akın", position: "Genel Müdür Yardımcısı", photo: "/media/team/ismet-akin.jpg" },
     { id: "3", name: "Hilal Mersin", position: "Pazarlama Direktörü", photo: "/media/team/hilal-mersin.jpg" },
-    { id: "4", name: "Mehmet Sabri Mersin", position: "Strateji ve İş Geliştirme Direktörü" },
+    { id: "4", name: "Mehmet Sabri Mersin", position: "Strateji ve İş Geliştirme Direktörü", photo: "/media/team/mehmet-sabri-mersin.jpg" },
     { id: "5", name: "Abdullah Karakum", position: "Üretim Planlama Direktörü", photo: "/media/team/abdullah-karakum.jpg" },
   ],
   en: [
     { id: "1", name: "Mehmet Mersin", position: "General Manager (GM)", photo: "/media/team/mehmet-mersin.jpg" },
     { id: "2", name: "İsmet Akın", position: "Deputy General Manager", photo: "/media/team/ismet-akin.jpg" },
     { id: "3", name: "Hilal Mersin", position: "Chief Marketing Officer (CMO)", photo: "/media/team/hilal-mersin.jpg" },
-    { id: "4", name: "Mehmet Sabri Mersin", position: "Director of Strategy & Business Development" },
+    { id: "4", name: "Mehmet Sabri Mersin", position: "Director of Strategy & Business Development", photo: "/media/team/mehmet-sabri-mersin.jpg" },
     { id: "5", name: "Abdullah Karakum", position: "Director of Production Planning", photo: "/media/team/abdullah-karakum.jpg" },
   ],
 };
