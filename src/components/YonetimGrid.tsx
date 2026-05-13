@@ -1,30 +1,27 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, User } from "lucide-react";
 import { usePathname } from "next/navigation";
-import media from "@/media.json";
 import { getLangFromPath } from "@/lib/i18n";
 
-const m = media as Record<string, string>;
+type Person = { id: string; name: string; position: string; photo?: string };
 
-const teamByLang = {
+const teamByLang: Record<"tr" | "en", Person[]> = {
   tr: [
-    { id: "1", name: "Ayla Haktan", position: "Genel Müdürü" },
-    { id: "2", name: "Ali Kara", position: "Muhasebe Müdürü" },
-    { id: "3", name: "Fatma Demir", position: "İnsan Kaynakları Müdürü" },
-    { id: "4", name: "Mehmet Yılmaz", position: "Teknoloji Müdürü" },
-    { id: "5", name: "Zeynep Güler", position: "Pazarlama Müdürü" },
-    { id: "6", name: "Hasan Karadeniz", position: "Satış Müdürü" },
+    { id: "1", name: "Mehmet Mersin", position: "Genel Müdür", photo: "/media/team/mehmet-mersin.jpg" },
+    { id: "2", name: "İsmet Akın", position: "Genel Müdür Yardımcısı", photo: "/media/team/ismet-akin.jpg" },
+    { id: "3", name: "Hilal Mersin", position: "Pazarlama Direktörü", photo: "/media/team/hilal-mersin.jpg" },
+    { id: "4", name: "Mehmet Sabri Mersin", position: "Strateji ve İş Geliştirme Direktörü" },
+    { id: "5", name: "Abdullah Karakum", position: "Üretim Planlama Direktörü", photo: "/media/team/abdullah-karakum.jpg" },
   ],
   en: [
-    { id: "1", name: "Ayla Haktan", position: "General Manager" },
-    { id: "2", name: "Ali Kara", position: "Finance Manager" },
-    { id: "3", name: "Fatma Demir", position: "HR Manager" },
-    { id: "4", name: "Mehmet Yılmaz", position: "Technology Manager" },
-    { id: "5", name: "Zeynep Güler", position: "Marketing Manager" },
-    { id: "6", name: "Hasan Karadeniz", position: "Sales Manager" },
+    { id: "1", name: "Mehmet Mersin", position: "General Manager (GM)", photo: "/media/team/mehmet-mersin.jpg" },
+    { id: "2", name: "İsmet Akın", position: "Deputy General Manager", photo: "/media/team/ismet-akin.jpg" },
+    { id: "3", name: "Hilal Mersin", position: "Chief Marketing Officer (CMO)", photo: "/media/team/hilal-mersin.jpg" },
+    { id: "4", name: "Mehmet Sabri Mersin", position: "Director of Strategy & Business Development" },
+    { id: "5", name: "Abdullah Karakum", position: "Director of Production Planning", photo: "/media/team/abdullah-karakum.jpg" },
   ],
 };
 
@@ -39,34 +36,63 @@ export default function YonetimGrid() {
   const team = teamByLang[lang];
   const t = dict[lang];
 
+  const viewportRef = useRef<HTMLDivElement | null>(null);
   const [idx, setIdx] = useState(0);
-  const [step, setStep] = useState(190);
-  const [visible, setVisible] = useState(5);
+  const [cardW, setCardW] = useState(260);
+  const [cardH, setCardH] = useState(340);
+  const [gap, setGap] = useState(20);
+  const [visible, setVisible] = useState(4);
 
   useEffect(() => {
-    const onResize = () => {
-      const w = window.innerWidth;
-      if (w < 640) {
-        setStep(160);
-        setVisible(2);
-      } else if (w < 1024) {
-        setStep(180);
-        setVisible(3);
-      } else {
-        setStep(200);
-        setVisible(5);
-      }
-    };
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
+    const compute = () => {
+      const vw = window.innerWidth;
+      const containerW = viewportRef.current?.clientWidth ?? vw;
 
+      let targetCardW: number;
+      let targetCardH: number;
+      let targetGap: number;
+
+      if (vw < 640) {
+        targetCardW = 200;
+        targetCardH = 260;
+        targetGap = 14;
+      } else if (vw < 1024) {
+        targetCardW = 230;
+        targetCardH = 300;
+        targetGap = 18;
+      } else if (vw < 1280) {
+        targetCardW = 250;
+        targetCardH = 330;
+        targetGap = 20;
+      } else {
+        targetCardW = 280;
+        targetCardH = 370;
+        targetGap = 22;
+      }
+
+      const fit = Math.max(
+        1,
+        Math.floor((containerW + targetGap) / (targetCardW + targetGap))
+      );
+
+      setCardW(targetCardW);
+      setCardH(targetCardH);
+      setGap(targetGap);
+      setVisible(Math.min(fit, team.length));
+    };
+
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, [team.length]);
+
+  const step = cardW + gap;
   const maxIdx = Math.max(0, team.length - visible);
+  useEffect(() => {
+    if (idx > maxIdx) setIdx(maxIdx);
+  }, [idx, maxIdx]);
   const next = () => setIdx((i) => Math.min(i + 1, maxIdx));
   const prev = () => setIdx((i) => Math.max(i - 1, 0));
-
-  const photo = m["yonetim.png"] || "/media/yonetim.52f47eaccc464c854bca.png";
 
   return (
     <div className="flex items-center gap-3 md:gap-5">
@@ -81,55 +107,44 @@ export default function YonetimGrid() {
       </button>
 
       {/* Cards viewport */}
-      <div className="flex-1 overflow-hidden">
+      <div ref={viewportRef} className="flex-1 overflow-hidden">
         <div
-          className="flex gap-3 md:gap-5 transition-transform duration-700 ease-out"
-          style={{ transform: `translateX(-${idx * step}px)` }}
+          className="flex transition-transform duration-700 ease-out"
+          style={{ transform: `translateX(-${idx * step}px)`, gap: `${gap}px` }}
         >
           {team.map((person) => (
             <div
               key={person.id}
-              className="flex-shrink-0 flex flex-col items-center gap-3 text-center"
-              style={{ width: step - (step < 180 ? 16 : 20) }}
+              className="flex-shrink-0 flex flex-col gap-3"
+              style={{ width: cardW }}
             >
-              {/* Round avatar with red duotone */}
+              {/* Rectangular photo card */}
               <div
-                className="relative rounded-full overflow-hidden border border-red-bright/40"
-                style={{
-                  width: step < 180 ? 100 : 130,
-                  height: step < 180 ? 100 : 130,
-                  background:
-                    "radial-gradient(circle at 50% 30%, rgba(250,80,80,0.8) 0%, rgba(150,30,30,0.6) 100%)",
-                  boxShadow: "0 0 25px rgba(250,0,0,0.2)",
-                }}
+                className="relative overflow-hidden rounded-2xl border border-red-deep/40 bg-[#1a1818]"
+                style={{ width: cardW, height: cardH }}
               >
-                <Image
-                  src={photo}
-                  alt={person.name}
-                  fill
-                  className="object-cover"
-                  style={{
-                    filter: "saturate(1.2) hue-rotate(-10deg) brightness(0.9)",
-                    mixBlendMode: "luminosity",
-                    opacity: 0.85,
-                  }}
-                />
-                {/* Red tint overlay */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(250,90,90,0.45) 0%, rgba(180,30,30,0.45) 100%)",
-                    mixBlendMode: "color",
-                  }}
-                />
+                {person.photo ? (
+                  <Image
+                    src={person.photo}
+                    alt={person.name}
+                    fill
+                    sizes="(max-width: 640px) 200px, (max-width: 1024px) 230px, (max-width: 1280px) 250px, 280px"
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-red-darker via-black to-red-darker">
+                    <User size={64} className="text-white/30" strokeWidth={1.2} />
+                  </div>
+                )}
+                {/* Subtle bottom gradient for readability if needed later */}
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
               </div>
 
-              <div className="px-1 leading-tight">
-                <p className="font-anybody italic text-white text-[13px] md:text-[15px]">
+              <div className="px-1">
+                <p className="font-anybody-bold italic text-white text-base md:text-lg leading-tight">
                   {person.name}
                 </p>
-                <p className="font-anybody italic text-white/70 text-[11px] md:text-[13px] mt-0.5 leading-tight">
+                <p className="font-display tracking-wide text-white/65 text-xs md:text-sm mt-1 leading-snug uppercase">
                   {person.position}
                 </p>
               </div>

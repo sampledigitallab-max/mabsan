@@ -9,12 +9,35 @@ import { getLangFromPath, type Lang } from "@/lib/i18n";
 
 const m = media as Record<string, string>;
 
-const socials = [
-  { key: "face.svg", label: "Facebook", href: "#" },
-  { key: "insta.svg", label: "Instagram", href: "#" },
-  { key: "twitter.svg", label: "X", href: "#" },
-  { key: "linkedin.svg", label: "LinkedIn", href: "#" },
-  { key: "youtube.svg", label: "YouTube", href: "#" },
+type Social = { key?: string; label: string; href: string; svgPath?: string };
+
+const socials: Social[] = [
+  {
+    key: "face.svg",
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61573190427890",
+  },
+  {
+    key: "insta.svg",
+    label: "Instagram",
+    href: "https://www.instagram.com/mabsan_ambalaj/",
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@mabsan.ambalaj",
+    svgPath:
+      "M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43V7.69a8.16 8.16 0 004.77 1.52V5.81a4.85 4.85 0 01-1.84-.88z",
+  },
+  {
+    key: "linkedin.svg",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/mabsan",
+  },
+  {
+    key: "youtube.svg",
+    label: "YouTube",
+    href: "https://www.youtube.com/channel/UCI46AZO0J2ybAEwprMntqLg",
+  },
 ];
 
 const dict = {
@@ -196,25 +219,41 @@ export default function Footer() {
         <div className="col-span-2 md:col-span-1 space-y-5">
           <h4 className="font-anybody-bold italic text-white text-2xl">{t.social}</h4>
           <div className="flex items-center gap-2.5">
-            {socials.map(
-              (s) =>
-                m[s.key] && (
-                  <a
-                    key={s.key}
-                    href={s.href}
-                    aria-label={s.label}
-                    className="w-9 h-9 rounded-full bg-white/5 hover:bg-red-bright/30 border border-white/10 hover:border-red-bright/50 flex items-center justify-center transition"
-                  >
+            {socials.map((s) => {
+              const iconSrc = s.key ? m[s.key] : undefined;
+              if (!iconSrc && !s.svgPath) return null;
+              return (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-9 h-9 rounded-full bg-white/5 hover:bg-red-bright/30 border border-white/10 hover:border-red-bright/50 flex items-center justify-center transition"
+                >
+                  {iconSrc ? (
                     <Image
-                      src={m[s.key]}
+                      src={iconSrc}
                       alt=""
                       width={16}
                       height={16}
                       className="brightness-0 invert"
                     />
-                  </a>
-                )
-            )}
+                  ) : (
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="text-white"
+                      aria-hidden="true"
+                    >
+                      <path d={s.svgPath} />
+                    </svg>
+                  )}
+                </a>
+              );
+            })}
           </div>
           <p className="text-[11px] text-white/35 leading-relaxed pt-2">
             Copyright © {new Date().getFullYear()} – Mabsan
